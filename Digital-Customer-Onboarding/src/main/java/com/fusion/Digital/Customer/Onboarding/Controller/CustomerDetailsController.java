@@ -1,8 +1,10 @@
 package com.fusion.Digital.Customer.Onboarding.Controller;
 
 import com.fusion.Digital.Customer.Onboarding.DTO.ApiResponce;
+import com.fusion.Digital.Customer.Onboarding.DTO.CustomerDetailsDTO;
 import com.fusion.Digital.Customer.Onboarding.Entity.CustomerDetailsEntity;
 import com.fusion.Digital.Customer.Onboarding.Service.CustomerDetailsService;
+import com.fusion.Digital.Customer.Onboarding.Service.OtpDetailsService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,6 +17,9 @@ import org.springframework.web.bind.annotation.*;
 public class CustomerDetailsController {
     @Autowired
     private CustomerDetailsService customerDetailsService;
+
+    @Autowired
+    private OtpDetailsService otpDetailsService;
 
     @PostMapping("customer-registration-one")
     public ResponseEntity<CustomerDetailsEntity> save(@RequestBody CustomerDetailsEntity customerDetails) {
@@ -40,9 +45,8 @@ public class CustomerDetailsController {
 
        }else {
            customerDetailsService.saveCust(customerDetails);
-       }
-
-
+           //Create OTP Save this otp in OTPDetaisl page with custId
+        }
         return new ResponseEntity(isUserAvailable,HttpStatus.OK);
     }
 
@@ -52,10 +56,30 @@ public class CustomerDetailsController {
 
         customerDetailsService.updateCust(customerDetails);
 
-        ApiResponce<Object> responce = ApiResponce.success("Update done Successfulyl !");
+        ApiResponce<Object> responce = ApiResponce.success("Update done Successfully !");
         return new ResponseEntity(responce,HttpStatus.OK);
     }
 
+ /*
+  Chat GPT Code create by me for DCO Document
+   */
 
+    @PostMapping("/customer-registration")
+    public ResponseEntity<String> registerCustomer(@RequestBody CustomerDetailsEntity customerDetailsEntity){
+
+        if (customerDetailsService.isCustomerExists(customerDetailsEntity)){
+            return ResponseEntity.status(409).body("Customer already exists Sorry Boss");
+        }
+
+        customerDetailsService.saveCustomer(customerDetailsEntity);
+
+        int generateOtpForCust = customerDetailsService.generateOtpForCust();
+
+        customerDetailsService.saveOTP(customerDetailsEntity.getMobileNumber(),generateOtpForCust);
+
+        customerDetailsService.sendOtpToMobile(customerDetailsEntity.getMobileNumber(),generateOtpForCust);
+
+        return ResponseEntity.ok("Customer Registere Successfully !");
+    }
     
 }

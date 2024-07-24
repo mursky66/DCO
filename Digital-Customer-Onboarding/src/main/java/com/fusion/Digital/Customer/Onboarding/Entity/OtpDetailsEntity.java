@@ -17,6 +17,9 @@ public class OtpDetailsEntity {
     @Column(name="status")
     private boolean status;
 
+    //New Add Entity
+    @Column(name = "mobilenumber")
+    private  String mobileNumber;
 
     @ManyToOne
     @JoinColumn(name = "custDetails")

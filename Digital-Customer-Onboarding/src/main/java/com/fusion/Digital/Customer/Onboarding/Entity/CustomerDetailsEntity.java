@@ -52,4 +52,27 @@ public class CustomerDetailsEntity {
     private List<AddressEntity> addressEntities;
 
 
+    /*
+
+    Customer Registration POJO for Postman
+
+    {
+    "name": "Maulin",
+    "middleName": "Jayeshbhai",
+    "surName": "Acharya",
+    "dob": "08-11-1993",
+    "mobileNumber": "9558018266",
+    "emailId": "maulilni66@gmail.com",
+    "panCardNo": "DBBPS9809C",
+    "status": 1,
+    "adharCardDocs": "XYZ",
+    "panCardDocs": "XYZ",
+    "addressVerificationDocs": "yes",
+    "signature": "yes",
+    "isMobileOtpValidated": 0,
+    "isEmailOtpValidated": 0
+}
+
+
+     */
 }
