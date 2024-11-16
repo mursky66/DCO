@@ -1,6 +1,5 @@
 package com.fusion.Digital.Customer.Onboarding.ServiceImpl;
 
-import com.fusion.Digital.Customer.Onboarding.DTO.CustomerDetailsDTO;
 import com.fusion.Digital.Customer.Onboarding.Entity.CustomerDetailsEntity;
 import com.fusion.Digital.Customer.Onboarding.Entity.OtpDetailsEntity;
 import com.fusion.Digital.Customer.Onboarding.Repository.CustomerDetailsRepository;
@@ -9,6 +8,7 @@ import com.fusion.Digital.Customer.Onboarding.Service.CustomerDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.text.DecimalFormat;
 import java.util.Optional;
 import java.util.Random;
 
@@ -95,6 +95,8 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 
     @Override
     public int generateOtpForCust() {
+       // String otp = new DecimalFormat("000000").format(new Random().nextInt(999999));
+       // return otp;
         Random random = new Random();
         int otp = 100000 + random.nextInt(900000);
         return otp;
@@ -114,7 +116,6 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 
 
     }
-
 
 }
 

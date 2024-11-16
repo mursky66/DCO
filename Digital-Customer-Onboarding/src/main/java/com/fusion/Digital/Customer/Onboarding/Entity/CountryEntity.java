@@ -8,11 +8,11 @@ import java.util.List;
 @Entity
 @Data
 @Table(name = "tbl_country")
-public class CountyEntity {
+public class CountryEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(name = "countryname",length = 100,nullable = false)
+    @Column(name = "countryname")
     private String countryName;
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "countyEntity")

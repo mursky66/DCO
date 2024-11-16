@@ -1,6 +1,5 @@
 package com.fusion.Digital.Customer.Onboarding.Service;
 
-import com.fusion.Digital.Customer.Onboarding.DTO.CustomerDetailsDTO;
 import com.fusion.Digital.Customer.Onboarding.Entity.CustomerDetailsEntity;
 import com.fusion.Digital.Customer.Onboarding.Entity.OtpDetailsEntity;
 import org.springframework.stereotype.Service;

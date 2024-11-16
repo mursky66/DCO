@@ -12,7 +12,7 @@ public class CityEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(name = "cityname",length = 100,nullable = false)
+    @Column(name = "cityname")
     private String cityName;
 
     @ManyToOne

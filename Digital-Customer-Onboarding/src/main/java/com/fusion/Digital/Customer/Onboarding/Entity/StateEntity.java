@@ -2,7 +2,6 @@ package com.fusion.Digital.Customer.Onboarding.Entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import org.springframework.context.annotation.EnableMBeanExport;
 
 import java.util.List;
 
@@ -13,12 +12,12 @@ public class StateEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(name = "statename",length = 100,nullable = false)
+    @Column(name = "statename")
     private String stateName;
 
     @ManyToOne
     @JoinColumn(name = "countryId")
-    private CountyEntity countyEntity;
+    private CountryEntity countyEntity;
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "stateEntity")
     private List<CityEntity> cityEntities;

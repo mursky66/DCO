@@ -14,16 +14,16 @@ public class CustomerDetailsEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(name = "name", length=100, nullable = false)
+    @Column(name = "name")
     private String name;
-    @Column(name = "middlename",length = 100,nullable = false)
+    @Column(name = "middlename")
     private String middleName;
-    @Column(name = "surname",length = 100,nullable = false)
+    @Column(name = "surname")
     private String surName;
     @Column(name = "dob")
     @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "dd-mm-yyyy")
     private Date dob;
-    @Column(name = "mobilenumber",length = 10,nullable = false,unique = true)
+    @Column(name = "mobilenumber",unique = true)
     private String mobileNumber;
     @Column(name = "emailid",length = 50,nullable = false,unique = true)
     private String emailId;
@@ -50,6 +50,9 @@ public class CustomerDetailsEntity {
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "customerDetails")
     private List<AddressEntity> addressEntities;
+
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "custDetails")
+    private List<CredentialsEntity> credentialsEntities;
 
 
     /*

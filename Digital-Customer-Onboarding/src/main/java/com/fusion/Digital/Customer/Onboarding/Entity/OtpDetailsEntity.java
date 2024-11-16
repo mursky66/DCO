@@ -17,6 +17,18 @@ public class OtpDetailsEntity {
     @Column(name="status")
     private boolean status;
 
+    @Column(name="mobileotp")
+    private int mobileOtp;
+
+    @Column(name="mobileotp_status")
+    private boolean mobileOtpStatus;
+
+    @Column(name="emailotp")
+    private int emailOtp;
+
+    @Column(name="emailotp_status")
+    private boolean emailOtpStatus;
+
     //New Add Entity
     @Column(name = "mobilenumber")
     private  String mobileNumber;

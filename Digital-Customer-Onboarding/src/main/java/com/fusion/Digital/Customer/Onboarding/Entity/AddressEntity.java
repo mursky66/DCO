@@ -22,7 +22,7 @@ public class AddressEntity {
 
     @ManyToOne
     @JoinColumn(name = "countryId")
-    private CountyEntity county;
+    private CountryEntity county;
 
     @ManyToOne
     @JoinColumn(name = "stateId")
